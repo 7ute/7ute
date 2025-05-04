@@ -1,6 +1,9 @@
 FROM node:20-alpine AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
+ARG ASTRO_TELEMETRY_DISABLED="0"
+
+RUN apk --no-cache add curl
 RUN corepack enable
 
 WORKDIR /app
