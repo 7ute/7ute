@@ -1,0 +1,26 @@
+---
+import { m } from "../../paraglide/messages"
+import Social from "./Social.astro"
+
+const pages = {
+    'portfolio': m["Portfolio"](),
+    'skills': m["Skills"](),
+    'formation-experience': m["Experience"](),
+}
+---
+<div class="w-full sticky top-0 bg-slate-800/80 backdrop-blur-3xl z-20">
+    <div class="flex items-center justify-center max-w-6xl mx-auto md:px-4">
+        <a smooth-scroll href="#" aria-label="Logo 7ute">
+            <svg class="size-7 mx-2 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                <path d="M113.9,11.4c0,0.1-11.7,24-25.9,52.9l-25.9,52.6l-13.5,0.1c-7.4,0-13.5,0-13.5-0.1c0-0.1,9.3-18.9,20.7-41.9
+        l20.7-41.8l-22.2-0.1L32.1,33V22.3c0-5.9,0.1-10.9,0.2-10.9C32.6,11,113.9,11.1,113.9,11.4z"/>
+            </svg>
+        </a>
+        <div class="flex-auto"></div>
+        {Object.entries(pages).map(([slug, label]) => (
+            <a smooth-scroll class="social-bar-link" href={`#${slug}`}>{label}</a>
+        ))}
+        <div class="flex-auto hidden md:block"></div>
+        <Social no-label={true} class="flex-initial" id="top-social-bar" />
+    </div>
+</div>

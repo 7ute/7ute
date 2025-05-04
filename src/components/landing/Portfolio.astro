@@ -4,6 +4,7 @@ import { PROJECTS, BACKGROUNDS, THUMBNAILS } from "../../data"
 import { Image } from 'astro:assets';
 import { getLocale } from "../../paraglide/runtime";
 import { localizedTrimmedUrl } from "../../tools/locales";
+import { m } from "../../paraglide/messages";
 
 const locale = getLocale()
 let projectNumber = 0
@@ -33,7 +34,7 @@ const columns = Object.entries(PROJECTS)
 ---
 <div id={Astro.props.id} class="bg-slate-600">
     <div class="max-w-6xl mx-auto p-8 py-12">
-        <h2 class="font-display font-bold text-white text-5xl mb-12">Portfolio</h2>
+        <h2 class="font-display font-bold text-white text-5xl mb-12">{m.Portfolio()}</h2>
 
         <div class="grid grid-cols-3 gap-5 lg:gap-8">
             {columns.map(column => (

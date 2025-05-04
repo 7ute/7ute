@@ -11,8 +11,6 @@ import { defaultLocale, locales } from './src/tools/locales';
 
 export default defineConfig({
     trailingSlash: 'never',
-    compressHTML: false,
-
     i18n: {
         locales,
         defaultLocale,

@@ -8,10 +8,18 @@ import Environments from "../../components/landing/Environments.astro"
 import FormationExperience from "../../components/landing/FormationExperience.astro"
 import Languages from "../../components/landing/Languages.astro"
 import Footer from "../../components/landing/Footer.astro"
+import Nav from "../../components/landing/Nav.astro"
 ---
 <Layout>
+    <div class="absolute top-16 right-5 z-10 mix-blend-overlay opacity-25">
+        <svg class="size-32 sm:size-48 md:size-64 lg:size-96 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+            <path d="M113.9,11.4c0,0.1-11.7,24-25.9,52.9l-25.9,52.6l-13.5,0.1c-7.4,0-13.5,0-13.5-0.1c0-0.1,9.3-18.9,20.7-41.9
+	l20.7-41.8l-22.2-0.1L32.1,33V22.3c0-5.9,0.1-10.9,0.2-10.9C32.6,11,113.9,11.1,113.9,11.4z"/>
+        </svg>
+    </div>
+
     <Hero />
-    <Social id="top-social-bar" />
+    <Nav />
     <Portfolio id="portfolio" />
     <Skills id="skills" />
     <Environments id="environments" />

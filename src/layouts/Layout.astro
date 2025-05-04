@@ -17,7 +17,7 @@ const { canonical = null, title = null, description = null, keywords = null } = 
 
 const currentLocale = getLocale()
 const alternates = getAlternates(Astro)
-let canonicalUrl = canonical ?? alternates.find(alternate => alternate.locale === currentLocale)
+let canonicalUrl = canonical ?? alternates.find(alternate => alternate.locale === currentLocale)?.url
 
 ---
 
@@ -35,7 +35,7 @@ let canonicalUrl = canonical ?? alternates.find(alternate => alternate.locale ==
     {alternates.map(alternate => (
         <link rel="alternate" hreflang={alternate.locale} href={alternate.url} />
     ))}
-    <link rel="canonical" href={canonicalUrl} />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 
     <Favicons />
     <ClientRouter />
@@ -43,4 +43,26 @@ let canonicalUrl = canonical ?? alternates.find(alternate => alternate.locale ==
 </head>
 <body class="bg-slate-800">
     <slot></slot>
+    <script>
+
+        const setupSmoothScroll = () => {
+            const linksToAnchors = document.querySelectorAll('a[smooth-scroll][href^="#"]')
+            Array.from(linksToAnchors).map(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault()
+                    const targetId = link.href.split('#')[1]
+                    const top = (targetId == '')
+                        ? 0
+                        : document.getElementById(targetId).offsetTop
+
+                    document.body.parentNode.scrollTo({
+                        top,
+                        behavior: 'smooth'
+                    });
+                })
+            })
+        }
+        document.addEventListener("astro:after-swap", setupSmoothScroll)
+        setupSmoothScroll()
+    </script>
 </body>

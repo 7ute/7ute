@@ -4,6 +4,10 @@
     --font-display: "Plus Jakarta Sans", "sans-serif";
 }
 
+.social-bar-link {
+    @apply hidden md:block px-4 font-display text-white/70 hover:text-white text-lg;
+}
+
 .tippy-box[data-theme="default"] {
     background-color: var(--color-slate-900);
     color: var(--color-slate-100);
