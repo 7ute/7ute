@@ -111,7 +111,7 @@ const ratio = image && (renderedImage.width < renderedImage.height)
                 {video && (
                     <div class="flex-1/2 max-w-xl mx-auto lg:max-w-none lg:h-screen lg:overflow-auto py-8 flex items-center">
                         <div class="aspect-4/3 rounded-xl overflow-hidden bg-black">
-                            <video src={video} autoplay loop />
+                            <video data-src={video} autoplay loop />
                         </div>
                     </div>
                 )}
@@ -128,4 +128,12 @@ const ratio = image && (renderedImage.width < renderedImage.height)
             window.history.back()
         }
     }
+    const playVideos = () => {
+        const videos = document.querySelectorAll('video[autoplay')
+        Array.from(videos).map(video => {
+            video.src = video.dataset.src
+        })
+    }
+    document.addEventListener("astro:after-swap", playVideos)
+    playVideos()
 </script>
