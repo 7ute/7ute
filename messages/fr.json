@@ -1,0 +1,57 @@
+{
+    "$schema": "https://inlang.com/schema/inlang-message-format",
+
+    "main_title": "Julien CAUVIN",
+    "main_description": "Julien Cauvin : Développeur / Webdesigner / Graphiste sur la région de Nice",
+    "main_keywords": "cauvin, julien, webdesign, graphisme, developpement, nice, cv, curriculum, vitae, resume, portfolio",
+
+    "Hi!": "Bonjour!",
+    "I’m {name}": "Je suis {name}",
+    "a creative software {developer} from Nice": "un {developer} d’application créatif habitant à Nice",
+    "who likes to {design} beautiful web stuff": "{design} de jolis sites web",
+    "with eye pleasing {graphics}": "et {graphics}",
+    "developer": "développeur",
+    "design": "concepteur",
+    "graphics": "graphiste",
+
+    "All right reserved.": "Tous droits réservés",
+    "Website hosted by {link}": "Site hébergé par {link}",
+    "Go to the website": "Voir le site",
+
+    "Project": "Projet",
+    
+    "Formation": "Formation",
+    "Scientific bachelor’s degree": "Baccalauréat S.",
+    "Henri Matisse High School": "Collège Henri Matisse",
+    "Licence Math-Computering": "License Math-Informatique",
+    "University of Nice / Sophia-Antipolis": "Université de Nice / Sophia-Antipolis",
+    "BTS in Business Computering System": "BTS Informatique de Gestion",
+    "ILEC Nice": "ILEC Nice",
+
+    "Experience": "Expériences",
+    "Software developper": "Développeur d’Application",
+    "Fullstack developper": "Développeur Full Stack",
+    "Webdesigner": "Webdesigner",
+    "Sysadmin": "Administrateur système",
+    "Apps Craftsman": "Concepteur d’Application",
+
+    "Programming skills": "Compétences en programmation",
+    "Environments & tools": "Environnement & outils",
+
+    "Languages": "Langues",
+    "French": "Français",
+    "English": "Anglais",
+    "German": "Allemand",
+    "Native": "Maternel",
+    "Fluent": "Courant",
+    "Basis": "Notions",
+
+    "Tablet": "Tablette",
+
+    "Page Not Found": "Page Introuvable",
+    "Server Error": "Erreur Serveur",
+    "Cookie not found": "Cookie Introuvable",
+    "Cookie jar broken": "Cookie Tout Cassé",
+    "Click here to go back home": "Cliquez ici pour retourner à l’accueil",
+    "Please wait patiently while I fix this thing.": "Veuillez patienter pendant que je ramasse les miettes."
+}

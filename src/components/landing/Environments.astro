@@ -1,0 +1,64 @@
+---
+import { getSvgIconPath, ENVIRONMENTS } from "../../data";
+import { m } from "../../paraglide/messages";
+
+let loaded = 0
+---
+<div id={Astro.props.id} class="bg-slate-700">
+    <div class="max-w-6xl mx-auto p-8 py-12 text-white">
+        <h2 class="text-center lg:text-right font-display font-bold text-5xl mb-12">{m["Environments & tools"]()}</h2>
+
+        <div class="grid md:flex items-center group" x-data="{ focused: null, highlighted: null }">
+            <div class="order-3 lg:order-1 flex-auto">
+                <div class="flex flex-wrap gap-0 items-center justify-center lg:justify-start">
+                    {ENVIRONMENTS.map((environmentGroup, j) => environmentGroup.map((environment, k) => (
+                            <div x-data="{ shown: false }">
+                                <img src={getSvgIconPath(environment)}
+                                    x-data={`{ environment: '${environment}' }`}
+                                    x-intersect="shown = true"
+                                    @pointerenter="focused = environment"
+                                    @pointerleave="focused = null"
+                                    class="size-12 m-2 translate-y-12 opacity-0 transition-all duration-500 delay-[var(--icon-delay)] group-hover:delay-0 group-hover:duration-150 rounded-lg"
+                                    :class="{
+                                        '!translate-y-0 !opacity-100': shown,
+                                        'size-16 !m-0 outline-2 outline-white/20': (focused == environment),
+                                    }"
+                                    style={`--icon-delay: ${++loaded * 75}ms`}
+                                    height="4rem"
+                                    width="4rem"
+                                    decoding="async"
+                                    loading="lazy"
+                                    alt={environment} />
+                            </div>
+                        )))}
+                </div>
+            </div>
+            <div class="order-2 hidden md:block flex-1/6 lg:flex-1/3">&nbsp;</div>
+            <div class="order-1 lg:order-3 flex-none my-4">
+                <ul class="px-3 text-center lg:text-right">
+                    {ENVIRONMENTS.map((environmentGroup, j) => (
+                        <li>
+                            {environmentGroup.map((environment, k) => (
+                                
+                                <span>{(k >= 1) && (
+                                    <span class="opacity-50 px-1">•</span>
+                                )}</span>
+                                <span
+                                    class="opacity-75 cursor-default transition-all"
+                                    x-data={`{ environment: '${environment}' }`}
+                                    @pointerenter="focused = environment"
+                                    @pointerleave="focused = null"
+                                    :class="{
+                                        'opacity-100': (focused == environment),
+                                    }"
+                                >
+                                    {environment}
+                                </span>
+                            ))}
+                        </li>
+                    ))}
+				</ul>
+            </div>
+        </div>
+    </div>
+</div>

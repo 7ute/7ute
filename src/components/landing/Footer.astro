@@ -1,0 +1,15 @@
+---
+import { m } from "../../paraglide/messages";
+import Translate from "../Translate.astro";
+import { HOSTING } from "../../data"
+
+---
+<footer class="bg-blue-400 text-white text-center text-xs p-4">
+    © {(new Date()).getFullYear()} <strong>7ute</strong>
+    - {m["All right reserved."]()}
+    - <Translate message="Website hosted by {link}">
+        <a class="font-bold" href={HOSTING.link} rel="external nofollow" target="_blank" slot="link">
+            {HOSTING.address.join(', ')}
+        </a>
+    </Translate>
+</footer>

@@ -1,0 +1,58 @@
+---
+import Translate from "../Translate.astro";
+
+import IcelandImage from '../../images/iceland.jpg'
+import { getAlternates } from "../../tools/locales";
+import { m } from "../../paraglide/messages";
+
+const alternates = getAlternates(Astro)
+---
+<header id="qui-suis-je" class="relative h-screen bg-cover bg-position-[30%_50%] bg-fixed bg-no-repeat overflow-hidden flex items-end lg:items-start justify-between"
+    style={
+        `background-image: url(${IcelandImage.src}); background-position: 30% 50%;`
+    }
+>
+    <div id="header-mask" class="absolute top-0 left-0 size-full bg-slate-800" style="opacity: 0"></div>
+    <div class="relative text-white text-3xl lg:text-5xl leading-tight font-light p-0 lg:p-20 uppercase overflow-visible z-10 max-w-7xl mx-auto">
+        <h1 class="font-display overflow-hidden bg-gradient-to-b from-transparent via-slate-900/50 to-slate-900/80 lg:text-shadow-lg lg:via-transparent lg:to-transparent p-8 pt-20 lg:p-0 lg:pl-[35%]">
+            <Translate message="Hi!" /><br />
+            <Translate message="I’m {name}">
+                <strong class="font-black" slot="name">Julien CAUVIN</strong>
+            </Translate>,
+            <Translate message="a creative software {developer} from Nice">
+                <strong class="font-black" slot="developer"><Translate message="developer" /></strong>
+            </Translate>,
+            <Translate message="who likes to {design} beautiful web stuff">
+                <strong class="font-black" slot="design"><Translate message="design" /></strong>
+            </Translate>
+            <Translate message="with eye pleasing {graphics}">
+                <strong class="font-black" slot="graphics"><Translate message="graphics" /></strong>
+            </Translate>
+        </h1>
+    </div>
+
+    <div class="absolute top-5 right-5 flex gap-3">
+        {alternates.map(alternate => (
+            <a class="block rounded-sm overflow-hidden" href={alternate.url}>
+                <img class="h-8 w-auto" src={`/icons/flag-${alternate.locale?.toUpperCase()}.svg`} alt={alternate.locale?.toUpperCase()} />
+            </a>
+        ))}
+    </div>
+    <div class="clearfix"></div>
+</header>
+<script>
+    const setupHeroWatcher = () => {
+        const header = document.querySelector('header')
+        const headerMask = document.querySelector('#header-mask')
+        if (header && headerMask) {
+            window.addEventListener('scroll', function () {
+                const sTop = window.scrollY
+                const winH = window.innerHeight
+                headerMask.style.opacity = sTop / winH
+                header.style.backgroundPosition = `30% calc(50% - ${( 0 + Math.floor( sTop / 2 ) )}px)`
+            })
+        }
+    }
+    document.addEventListener("astro:after-swap", setupHeroWatcher)
+    setupHeroWatcher()
+</script>

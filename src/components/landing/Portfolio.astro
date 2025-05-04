@@ -1,0 +1,57 @@
+---
+import { getImage } from "astro:assets"
+import { PROJECTS, BACKGROUNDS, THUMBNAILS } from "../../data"
+import { Image } from 'astro:assets';
+import { getLocale } from "../../paraglide/runtime";
+import { localizedTrimmedUrl } from "../../tools/locales";
+
+const locale = getLocale()
+let projectNumber = 0
+const columns = Object.entries(PROJECTS)
+    .filter(([key, project]) => project.thumb != null)
+    .reduce((acc, [key, project], n) => {
+        const thumbnailPath = `/src/images/projects/thumbnails/${project.thumb}`
+        const thumbnail = (project.thumb && THUMBNAILS[thumbnailPath])
+            ? THUMBNAILS[thumbnailPath]()
+            : null
+        if (!thumbnail) {
+            return acc
+        }
+        acc[projectNumber % 3] = [
+            ...(acc[projectNumber % 3] ?? []),
+            {
+                key,
+                href: localizedTrimmedUrl(Astro, locale, `projects/${key}`),
+                ...project,
+                thumbnail,
+            }
+        ]
+        projectNumber++
+        return acc
+    }, [])
+    
+---
+<div id={Astro.props.id} class="bg-slate-600">
+    <div class="max-w-6xl mx-auto p-8 py-12">
+        <h2 class="font-display font-bold text-white text-5xl mb-12">Portfolio</h2>
+
+        <div class="grid grid-cols-3 gap-5 lg:gap-8">
+            {columns.map(column => (
+                <div class="flex flex-col gap-5 lg:gap-8">
+                    {column.map(project => (
+                    <a href={project.href}
+                        x-data="{ shown: false }"
+                        x-intersect="shown = true"
+                        class="overflow-hidden rounded-xl transition-all duration-500 ease-in"
+                        :class="{
+                            'translate-y-8 opacity-0': !shown,
+                            'translate-y-0 opacity-100': shown,
+                        }">
+                        <Image src={project.thumbnail} class="w-full h-auto" alt={project.title} transition:name={`project-${project.key}`} />
+                    </a>
+                    ))}
+                </div>
+            ))}
+        </div>
+    </div>
+</div>

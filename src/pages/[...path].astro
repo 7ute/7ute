@@ -1,0 +1,13 @@
+---
+import { defaultLocale } from "../tools/locales"
+
+const path = Astro.params.path ?? "/"
+const url = Astro.url
+const newUrl = `${Astro.url.protocol}//${Astro.url.host}/${defaultLocale}` + (path !== "/" ? `/${path}` : "")
+const matchingRegex = `/^${defaultLocale}[/](.*?)$/ui`
+if (path.match(/en[/]/)) {
+    return new Response(null, { status: 404 })
+}
+Astro.preferredLocale
+return Astro.rewrite(newUrl)
+---

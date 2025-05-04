@@ -1,0 +1,25 @@
+---
+import '@fontsource/plus-jakarta-sans/400.css';
+import '@fontsource/plus-jakarta-sans/700.css';
+import "../styles/global.css";
+
+import { m } from "../paraglide/messages"
+const locale = Astro.preferredLocale
+
+---
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Julien CAUVIN :: {m["Server Error"]({}, { locale })}</title>
+    </head>
+    <body class="size-lvh bg-[url('/images/pug.jpg')] bg-cover bg-center bg-no-repeat">
+        <div class="absolute bottom-3 right-3 p-12 text-right">
+            <h1 class="font-display font-bold text-7xl text-white">500</h1>
+            <h3 class="font-display font-bold text-3xl text-white/80">{m["Cookie jar broken"]({}, { locale })}</h3>
+            <div class="font-display text-lg text-white/50">
+                {m["Please wait patiently while I fix this thing."]({}, { locale })}
+            </div>
+        </div>
+    </body>
+</html>

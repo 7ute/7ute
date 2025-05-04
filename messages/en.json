@@ -1,0 +1,56 @@
+{
+    "$schema": "https://inlang.com/schema/inlang-message-format",
+
+    "main_title": "Julien CAUVIN",
+    "main_description": "Julien Cauvin : Software Developer / Webdesigner / Graphist in the South of France",
+    "main_keywords": "cauvin, julien, webdesign, graphism, development, Nice, cv, curriculum, vitae, resume, portfolio",
+
+    "Hi!": "Hi!",
+    "I’m {name}": "I’m {name}",
+    "a creative software {developer} from Nice": "a creative software {developer} from Nice",
+    "who likes to {design} beautiful web stuff": "who likes to {design} beautiful web stuff",
+    "with eye pleasing {graphics}": "with eye pleasing {graphics}",
+    "developer": "developer",
+    "design": "design",
+    "graphics": "graphics",
+
+    "All right reserved.": "All right reserved.",
+    "Website hosted by {link}": "Website hosted by {link}",
+    "Go to the website": "Go to the website",
+
+    "Project": "Project",
+    
+    "Formation": "Formation",
+    "Scientific bachelor’s degree": "Scientific bachelor’s degree",
+    "Henri Matisse High School": "Henri Matisse High School",
+    "Licence Math-Computering": "Licence Math-Computering",
+    "University of Nice / Sophia-Antipolis": "University of Nice / Sophia-Antipolis",
+    "BTS in Business Computering System": "BTS in Business Computering System",
+    "ILEC Nice": "ILEC Nice",
+
+    "Experience": "Experience",
+    "Software developper": "Software developper",
+    "Fullstack developper": "Fullstack developper",
+    "Webdesigner": "Webdesigner",
+    "Sysadmin": "Sysadmin",
+
+    "Programming skills": "Programming skills",
+    "Environments & tools": "Environments & tools",
+
+    "Languages": "Languages",
+    "French": "French",
+    "English": "English",
+    "German": "German",
+    "Native": "Native",
+    "Fluent": "Fluent",
+    "Basis": "Basis",
+
+    "Tablet": "Tablet",
+
+    "Page Not Found": "Page Not Found",
+    "Server Error": "Server Error",
+    "Cookie not found": "Cookie not found",
+    "Cookie jar broken": "Cookie is broken",
+    "Click here to go back home": "Click here to go back home",
+    "Please wait patiently while I fix this thing.": "Please wait patiently while I clean the crumbs."
+}

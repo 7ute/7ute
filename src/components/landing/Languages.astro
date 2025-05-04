@@ -1,0 +1,33 @@
+---
+import { LANGUAGES } from "../../data";
+import { Icon } from 'astro-icon/components'
+import { m } from "../../paraglide/messages";
+
+
+---
+<div id={Astro.props.id} class="bg-slate-200">
+    <div class="max-w-6xl mx-auto p-8 py-12 text-slate-700 text-center">
+        <h2 class="font-display font-bold text-5xl mb-12">{m.Languages()}</h2>
+
+        <div class="grid grid-cols-3 md:flex items-center justify-center gap-6 md:gap-12">
+            {LANGUAGES.map(language => (
+            <div class="flex items-center justify-center">
+                <div class="">
+                    <div class="relative group rounded-xl overflow-hidden">
+                        <img src={`/icons/${language.icon}`} class="w-40 h-auto" alt={language.label} decoding="async" loading="lazy" />
+                        <div class="absolute top-0 left-0 size-full flex flex-col items-center justify-center gap-1 bg-slate-900/75 text-white opacity-0 group-hover:opacity-100 transition-all select-none">
+                            <h3 class="font-display font-black text-3xl leading-tight white">{language.label}</h3>
+                            <div class="text-2xl leading-tight">{language.level}</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center gap-1 mt-3">
+                        {[...Array(language.stars).keys()].map(n => (
+                            <Icon name="lucide:star" class="size-4 md:size-6 text-amber-600" />
+                        ))}
+                    </div>
+                </div>
+            </div>
+            ))}
+        </div>
+    </div>
+</div>

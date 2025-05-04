@@ -1,0 +1,24 @@
+{
+    "extends": "astro/tsconfigs/base",
+    "include": [
+        ".astro/types.d.ts",
+        "**/*"
+    ],
+    "exclude": [
+        "dist",
+        "public/"
+    ],
+    "compilerOptions": {
+        "allowJs": true
+    },
+    "typeCheck": {
+        // ignore `no default export` warning when using setup syntax
+        "issue": {
+            "exclude": [
+                {
+                    "code": "TS1192"
+                }
+            ]
+        },
+    },
+}

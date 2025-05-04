@@ -1,0 +1,46 @@
+---
+import '@fontsource/plus-jakarta-sans/200.css';
+import '@fontsource/plus-jakarta-sans/400.css';
+import '@fontsource/plus-jakarta-sans/700.css';
+import '@fontsource/plus-jakarta-sans/800.css';
+import "../styles/global.css";
+
+import Favicons from "../components/Favicons.astro";
+import { getAlternates } from "../tools/locales";
+import { getLocale } from "../paraglide/runtime";
+import { ClientRouter } from "astro:transitions";
+import { Tooltips } from '../tools/tooltips';
+
+import * as m from '../paraglide/messages'
+
+const { canonical = null, title = null, description = null, keywords = null } = Astro.props
+
+const currentLocale = getLocale()
+const alternates = getAlternates(Astro)
+let canonicalUrl = canonical ?? alternates.find(alternate => alternate.locale === currentLocale)
+
+---
+
+<!DOCTYPE html>
+<html transition:name="root" transition:animate="none" lang={currentLocale} class="no-js">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{m.main_title() + (title ? ` :: ${title}` : '')}</title>
+	<meta name="description" content={description ?? m.main_description()} />
+	<meta name="keywords" content={keywords ?? m.main_keywords()} />
+	<meta name="author" content="Julien CAUVIN" />
+	<meta name="google-site-verification" content="O-q3hUGlNKsT_BZYAlICxtMZ6kvKDdTS7g2G9PvQ9hs" />
+
+    {alternates.map(alternate => (
+        <link rel="alternate" hreflang={alternate.locale} href={alternate.url} />
+    ))}
+    <link rel="canonical" href={canonicalUrl} />
+
+    <Favicons />
+    <ClientRouter />
+    <Tooltips interactive={false} delay={[0, 0]} />
+</head>
+<body class="bg-slate-800">
+    <slot></slot>
+</body>

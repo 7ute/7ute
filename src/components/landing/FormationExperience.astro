@@ -1,0 +1,50 @@
+---
+import { m } from "../../paraglide/messages";
+import { FORMATIONS, EXPERIENCES } from "../../data"
+
+---
+<section id={Astro.props.id} class="bg-slate-600">
+    <div class="max-w-6xl mx-auto p-8 py-12 text-white">
+        <div class="grid items-start lg:grid-cols-2">
+            <div id="formation" class="grid gap-4 overflow-visible pb-12">
+                <h2 class="font-display font-bold text-5xl mb-6">{m.Formation()}</h2>
+                {FORMATIONS.map((formation, n) => (
+                    <div x-data="{ shown: false }">
+                        <dl x-intersect="shown = true"
+                            class="transition-all duration-500 delay-[var(--icon-delay)]"
+                            :class="{
+                                '-translate-x-16 opacity-0': !shown,
+                                'translate-x-0 opacity-100': shown,
+                            }"
+                            style={`--icon-delay: ${n * 100}ms`}>
+                            <dt class="text-lg">{m[formation.title]()}</dt>
+                            <dd class="text-sm opacity-75">{m[formation.school]()}</dd>
+                        </dl>
+                    </div>
+                ))}
+            </div>
+            <div id="experiences" class="grid gap-4 overflow-visible">
+                <h2 class="font-display font-bold text-5xl mb-6">{m.Experience()}</h2>
+                {EXPERIENCES.map((experience, n) => (
+                    <div x-data="{ shown: false }">
+                        <dl x-intersect="shown = true"
+                            class="transition-all duration-500 delay-[var(--icon-delay)]"
+                            :class="{
+                                'translate-x-16 opacity-0': !shown,
+                                'translate-x-0 opacity-100': shown,
+                            }"
+                            style={`--icon-delay: ${n * 175}ms`}>
+                            <dt class="text-lg">
+                                {experience.titles.map(title => m[title]()).join(' - ')}
+                            </dt>
+                            <dd class="text-sm opacity-75 flex items-center justify-between">
+                                <span>{experience.company}</span>
+                                <em class="date">{experience.dates.from}-{experience.dates.to}</em>
+                            </dd>
+                        </dl>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>

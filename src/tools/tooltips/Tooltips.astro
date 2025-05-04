@@ -1,0 +1,16 @@
+---
+import "tippy.js/dist/tippy.css"
+/* —————————————————————————————————————————————————————————————————————————— */
+import type { Props as baseProps } from "./Props"
+
+export interface Props extends baseProps {}
+const props = { ...Astro.props } as Props
+---
+
+{Object.entries(props).length > 0 && <script type="application/json" data-tooltips-options set:html={JSON.stringify(props)} />}
+
+<script>
+    import { setupTippy } from './Tooltips.client'
+    document.addEventListener("astro:after-swap", setupTippy)
+    setupTippy()
+</script>

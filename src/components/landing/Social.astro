@@ -1,0 +1,19 @@
+---
+import { Icon } from 'astro-icon/components'
+import { SOCIAL } from '../../data'
+---
+<nav id={Astro.props.id}>
+    <div class={`grid grid-cols-6`}>
+        {Object.entries(SOCIAL).map(([key, social]) => (
+            <a href={social.url}
+                class="group h-10 w-full bg-slate-800 text-white hover:bg-[var(--accent-color)] flex items-center justify-center gap-3 transition-all duration-200"
+                style={`--accent-color: ${social.accentColor}`}
+                data-social={key}
+                target="_blank"
+                rel="external">
+                <Icon name={social.icon} class="size-4 group-hover:size-5 transition-all duration-200" />
+                <span class="hidden md:block group-hover:text-xl transition-all duration-200">{social.label}</span>
+            </a>
+        ))}
+    </div>
+</nav>

@@ -1,0 +1,9 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" enable-background="new 0 0 48 48">
+<g>
+    <path fill="#EFEFEF" d="M42,37c0,2.8-2.2,5-5,5H11c-2.8,0-5-2.2-5-5V11c0-2.8,2.2-5,5-5h26c2.8,0,5,2.2,5,5V37z"/>
+    <g>
+    	<path fill="#41B883" data-hover="semi-fond" d="M20.2,9.7l3.8,6.6l3.8-6.6h12.7L24,38.3L7.5,9.7H20.2z"/>
+    	<path fill="#34495E" data-hover="fond" d="M20.2,9.7l3.8,6.6l3.8-6.6h6.1L24,26.9L14.1,9.7H20.2z"/>
+    </g>
+</g>
+</svg>

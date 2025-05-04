@@ -1,0 +1,23 @@
+---
+import '@fontsource/plus-jakarta-sans/400.css';
+import '@fontsource/plus-jakarta-sans/700.css';
+import "../styles/global.css";
+
+import { m } from "../paraglide/messages"
+const locale = Astro.preferredLocale
+
+---
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Julien CAUVIN :: {m["Page Not Found"]({}, { locale })}</title>
+    </head>
+    <body class="size-lvh bg-[url('/images/pug.jpg')] bg-cover bg-center bg-no-repeat">
+        <div class="absolute bottom-3 right-3 p-12 text-right">
+            <h1 class="font-display font-bold text-7xl text-white">404</h1>
+            <h3 class="font-display font-bold text-3xl text-white/80">{m["Cookie not found"]({}, { locale })}</h3>
+            <a class="font-display text-lg text-white/50 hover:text-white transition" href="/">{m["Click here to go back home"]({}, { locale })}</a>
+        </div>
+    </body>
+</html>

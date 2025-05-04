@@ -1,0 +1,10 @@
+---
+import * as m from '../paraglide/messages'
+const { message = '' } = Astro.props
+const slots = await Promise.all(
+    Object.keys(Astro.slots)
+        .map(async (name) => [name, await Astro.slots.render(name)])
+).then(Object.fromEntries)
+const translation = m[message](slots) ?? message
+---
+<Fragment set:html={translation} />
