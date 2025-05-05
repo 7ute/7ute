@@ -36,7 +36,7 @@ const robotsMeta = ROBOTS
 	<meta name="author" content="Julien CAUVIN" />
 	{googleSiteVerificationCode && (<meta name="google-site-verification" content={googleSiteVerificationCode} />)}
 	{robotsMeta && (<meta name="robots" content={robotsMeta} />)}
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="sitemap" href="/sitemap.xml" />
 
     {alternates.map(alternate => (
         <link rel="alternate" hreflang={alternate.language} href={alternate.url} />
