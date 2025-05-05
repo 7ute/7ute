@@ -8,11 +8,14 @@ import tailwindcss from "@tailwindcss/vite";
 
 import icon from "astro-icon";
 import { defaultLocale, locales } from './src/tools/locales';
+import { SITE_URL } from './src/tools/envs';
+
 
 export default defineConfig({
+    site: SITE_URL,
     trailingSlash: 'never',
     i18n: {
-        locales,
+        locales: Object.keys(locales),
         defaultLocale,
     },
 

@@ -1,7 +1,10 @@
 import type { AstroGlobal } from "astro"
 
 export const defaultLocale = 'en'
-export const locales = ["en", "fr"]
+export const locales = {
+    en: "en",
+    fr: "fr-FR",
+}
 
 export const localizedTrimmedUrl = (context: AstroGlobal, locale, path = null, hash = null) => {
     const baseUrl = `${context.url.protocol}//${context.url.host}${locale != defaultLocale ? `/${locale}` : ''}`
@@ -10,7 +13,7 @@ export const localizedTrimmedUrl = (context: AstroGlobal, locale, path = null, h
 }
 
 export const getAlternates = (context: AstroGlobal) => {
-    return locales.map(locale => {
+    return Object.entries(locales).map(([locale, language]) => {
         const baseUrl = `${context.url.protocol}//${context.url.host}`
         const localizedPath = context.url.pathname.replace(/^\/(en|fr)(\/)?/, '')
         const url = (locale == defaultLocale)
@@ -18,6 +21,7 @@ export const getAlternates = (context: AstroGlobal) => {
             : `${baseUrl}/${locale}${localizedPath != '' ? `/${localizedPath}` : ''}`
         return {
             locale,
+            language,
             url,
         }
     })

@@ -12,12 +12,16 @@ import { ClientRouter } from "astro:transitions";
 import { Tooltips } from '../tools/tooltips';
 
 import * as m from '../paraglide/messages'
+import { GOOGLE_SITE_VERIFICATION_CODE, ROBOTS } from '../tools/envs';
 
 const { canonical = null, title = null, description = null, keywords = null } = Astro.props
 
 const currentLocale = getLocale()
 const alternates = getAlternates(Astro)
 let canonicalUrl = canonical ?? alternates.find(alternate => alternate.locale === currentLocale)?.url
+
+const googleSiteVerificationCode = GOOGLE_SITE_VERIFICATION_CODE
+const robotsMeta = ROBOTS
 
 ---
 
@@ -30,10 +34,12 @@ let canonicalUrl = canonical ?? alternates.find(alternate => alternate.locale ==
 	<meta name="description" content={description ?? m.main_description()} />
 	<meta name="keywords" content={keywords ?? m.main_keywords()} />
 	<meta name="author" content="Julien CAUVIN" />
-	<meta name="google-site-verification" content="O-q3hUGlNKsT_BZYAlICxtMZ6kvKDdTS7g2G9PvQ9hs" />
+	{googleSiteVerificationCode && (<meta name="google-site-verification" content={googleSiteVerificationCode} />)}
+	{robotsMeta && (<meta name="robots" content={robotsMeta} />)}
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
     {alternates.map(alternate => (
-        <link rel="alternate" hreflang={alternate.locale} href={alternate.url} />
+        <link rel="alternate" hreflang={alternate.language} href={alternate.url} />
     ))}
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 
